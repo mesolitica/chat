@@ -1,0 +1,21 @@
+version: "3.0"
+
+services:
+
+  chat:
+    build:
+      context: .
+    container_name: chat
+    networks: ['rasa-network']
+    environment:
+      PORT: 3005
+    volumes:
+      - "./:/app"
+    ports:
+      - "3005:3005"
+    command: /start-reload.sh
+
+
+networks:
+  rasa-network:
+    external: true
